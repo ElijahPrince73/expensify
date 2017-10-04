@@ -1,3 +1,4 @@
+//Object destructoring
 // const person = {
 // name: 'Elijah',
 //   age: 21,
@@ -30,21 +31,39 @@
 
 //Challenge
 
-const book = {
-  title: 'Ego is the enemy',
-  author: 'Ryan Holiday',
-  publisher: {
-    name: 'Penguin'
-  }
-}
+// const book = {
+//   title: 'Ego is the enemy',
+//   author: 'Ryan Holiday',
+//   publisher: {
+//     name: 'Penguin'
+//   }
+// }
+//
+// const {
+//   title,
+//   author
+// } = book;
+//
+// const {
+//   name: publisherName = 'Self Published'
+// } = book.publisher
+//
+// console.log(`${publisherName}`);
 
-const {
-  title,
-  author
-} = book;
 
-const {
-  name: publisherName = 'Self Published'
-} = book.publisher
 
-console.log(`${publisherName}`);
+//
+//Array destructoring
+//
+
+// const address = ['1299 S Juniper Street', 'Las vegas', 'Nevada', '89123']
+//
+// const [, city, state = 'Texas'] = address
+//
+// console.log(`You are in ${city} ${state}`);
+
+// const item = ['Coffee (hot)', '$2.00', '$3.50', '$4.00']
+//
+// const [name, , medium, ] = item
+//
+// console.log(`A medium ${name} cost ${medium} `);
