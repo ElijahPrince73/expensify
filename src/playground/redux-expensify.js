@@ -1,7 +1,7 @@
-import {createStore, combineReducers} from 'redux'
-import uuid from 'uuid'
-//Add expenses
+import {createStore, combineReducers} from 'redux';
+import uuid from 'uuid';
 
+// ADD_EXPENSE
 const addExpense = ({
   description = '',
   note = '',
@@ -17,17 +17,20 @@ const addExpense = ({
     createdAt
   }
 });
-//Remove
-const removeExpense = ({id} = {}) = ({type: "REMOVE_EXPENSE", id: id})
-//Edit expenses
-//Filter text
-//Sort by Date
-//Sort by amount
-//Set start Date
-//Set end Date
 
-//Expenses Reducer
-const expensesReducerDefaultState = []
+// REMOVE_EXPENSE
+const removeExpense = ({id} = {}) => ({type: 'REMOVE_EXPENSE', id});
+
+// EDIT_EXPENSE
+// SET_TEXT_FILTER
+// SORT_BY_DATE
+// SORT_BY_AMOUNT
+// SET_START_DATE
+// SET_END_DATE
+
+// Expenses Reducer
+
+const expensesReducerDefaultState = [];
 
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
   switch (action.type) {
@@ -37,54 +40,53 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
         action.expense
       ];
     case 'REMOVE_EXPENSE':
-      return state.filter(({id}) => id !== action.id)
+      return state.filter(({id}) => id !== action.id);
     default:
       return state;
   }
 };
 
-//Filter Reducer
-const filteReducerDefaultState = {
+// Filters Reducer
+
+const filtersReducerDefaultState = {
   text: '',
   sortBy: 'date',
   startDate: undefined,
   endDate: undefined
-}
+};
 
-const filtersReducer = (state = filteReducerDefaultState, action) => {
+const filtersReducer = (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     default:
       return state;
   }
-}
+};
 
-//Store Creation and combines reducers
+// Store creation
 const store = createStore(combineReducers({expenses: expensesReducer, filters: filtersReducer}));
 
 store.subscribe(() => {
   console.log(store.getState());
-})
+});
 
 const expenseOne = store.dispatch(addExpense({description: 'Rent', amount: 100}));
 const expenseTwo = store.dispatch(addExpense({description: 'Coffee', amount: 300}));
 
 store.dispatch(removeExpense({id: expenseOne.expense.id}));
 
-console.log(expenseOne);
-
 const demoState = {
   expenses: [
     {
-      id: 'sdjsjdjsd',
-      description: 'October Rent',
-      note: 'This was a payment for the rent',
+      id: 'poijasdfhwer',
+      description: 'January Rent',
+      note: 'This was the final payment for that address',
       amount: 54500,
       createdAt: 0
     }
   ],
   filters: {
     text: 'rent',
-    sortBy: 'amount', //Date or amount
+    sortBy: 'amount', // date or amount
     startDate: undefined,
     endDate: undefined
   }
