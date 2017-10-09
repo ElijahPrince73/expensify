@@ -96,7 +96,12 @@ store.dispatch(removeExpense({id: expenseOne.expense.id}));
 store.dispatch(editExpense(expenseTwo.expense.id, {amount: 600}));
 
 store.dispatch(setTextFilter('rent'));
+
 store.dispatch(setTextFilter());
+
+store.dispatch(sortByAmount()) //amount
+
+store.dispatch(sortByDate()) // date
 
 const demoState = {
   expenses: [
